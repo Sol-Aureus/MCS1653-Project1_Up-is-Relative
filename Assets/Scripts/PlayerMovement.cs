@@ -5,8 +5,8 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     // Connecting player obejct
-    public Rigidbody2D playerRigidbody;
-    public SpriteRenderer playerSprite;
+    private Rigidbody2D playerRigidbody;
+    private SpriteRenderer playerSprite;
 
     // Left right movement
     public float moveSpeed;
@@ -27,7 +27,8 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        playerRigidbody = GetComponent<Rigidbody2D>();
+        playerSprite = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame

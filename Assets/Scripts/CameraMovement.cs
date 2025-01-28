@@ -5,11 +5,18 @@ using UnityEngine;
 public class CameraMovement : MonoBehaviour
 {
     // Connecting player object
-    public Transform playerTransform;
+    private Transform playerTransform;
     public Vector3 offset;
     public float smoothSpeed;
 
-    void LateUpdate()
+    // Start is called before the first frame update
+    void Start()
+    {
+        // Gets the player object
+        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+    }
+
+    void FixedUpdate()
     {
         // Gets the player's position
         Vector3 desiredPosition = playerTransform.position + offset;
