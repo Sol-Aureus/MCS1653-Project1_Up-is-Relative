@@ -16,12 +16,7 @@ public class PlayerMovement : MonoBehaviour
     public float jumpPower;
 
     // Ground check
-    public LayerMask groundLayer;
-    public Transform bodyPosition;
-    public Transform bodyPosition2;
-    public float groundCheckRadius;
-    private bool isGrounded;
-    private bool isGrounded2;
+    private CapsuleCollider2D groundCollider;
     private bool isFlipped;
 
     // Start is called before the first frame update
@@ -29,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
     {
         playerRigidbody = GetComponent<Rigidbody2D>();
         playerSprite = GetComponent<SpriteRenderer>();
+        groundCollider = GetComponent<CapsuleCollider2D>();
     }
 
     // Update is called once per frame
@@ -47,23 +43,19 @@ public class PlayerMovement : MonoBehaviour
             playerSprite.flipX = true;
         }
 
-        // Checks if the player is grounded
-        isGrounded = Physics2D.OverlapCircle(bodyPosition.position, groundCheckRadius, groundLayer);
-        isGrounded2 = Physics2D.OverlapCircle(bodyPosition2.position, groundCheckRadius, groundLayer);
-
         // Resets the flip times if the player is grounded
-        if (isGrounded || isGrounded2)
+        if (IsGrounded())
         {
             ResetFlips();
         }
 
         // Flips the player gravity if they are grounded or have flips left
-        if (Input.GetButtonDown("Jump") && (isGrounded || isGrounded2))
+        if (Input.GetButtonDown("Jump") && IsGrounded())
         {
             FlipGravity();
             ResetFlips();
         }
-        else if (Input.GetButtonDown("Jump") && !(isGrounded || isGrounded2) && flipTimes > 0)
+        else if (Input.GetButtonDown("Jump") && !IsGrounded() && flipTimes > 0)
         {
             FlipGravity();
             flipTimes--;
@@ -74,6 +66,11 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         playerRigidbody.velocity = new Vector2(playerInput * moveSpeed, playerRigidbody.velocity.y);
+    }
+
+    bool IsGrounded()
+    {
+        return groundCollider.IsTouchingLayers(LayerMask.GetMask("Ground"));
     }
 
     // Resets the flip times

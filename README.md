@@ -10,32 +10,34 @@
 ---
 
 # Required ReadMe Info for ALL MCS1653 Projects
-* **Project**   - 
-* **Your Name** - 
-* **Date**      - 
+* **Up is Relative**   - 
+* **Eric Harrison** - 
+* **29/01/2025**      - 
 
 <br>
 
 1. **What are the controls to your game? How do we play?**
-
+A and left arrow moves left
+D and right arrow moves right
+Spacebar reverses gravity
 
 
 <br>
 
 2. **What creative additions did you make? How can we find them?**
-
+[Answer this later]
 
 
 <br>
 
 3. **Any assets used that you didn't create yourself?** <br> (art, music, etc. Just tell us where you got it, link it here)
-
+No
 
 
 <br>
 
 4. **Did you receive help from anyone outside this class?** <br> (list their names and what they helped with)
-
+No
 
 
 <br>
@@ -47,13 +49,13 @@
 <br>
 
 6. **Did you get help from any online websites, videos, or tutorials?** <br> (link them here)
-
+https://www.youtube.com/watch?v=2Y3Y9-Az7oE
 
 
 <br>
 
 7. **What trouble did you have with this project?**
-
+UI
 
 
 <br>
