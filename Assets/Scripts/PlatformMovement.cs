@@ -24,6 +24,9 @@ public class PlatformMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /* Thanks to Rytech for the sine wave function code
+         * https://www.youtube.com/watch?v=2Y3Y9-Az7oE
+         */
         if (transform.position != points[i].position)
         {
             sinTime += (platformSpeed * Time.deltaTime) / 100; // Gets the move speed of the platform
