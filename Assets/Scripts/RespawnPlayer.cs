@@ -27,12 +27,15 @@ public class RespawnPlayer : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            player.transform.position = respawnPoint.transform.position;
-            if (playerMovement.isFlipped) // If the player is flipped, flip them back
+            if (other.GetType().ToString().Equals("UnityEngine.CircleCollider2D"))
             {
-                playerMovement.FlipGravity();
+                player.transform.position = respawnPoint.transform.position;
+                if (playerMovement.isFlipped) // If the player is flipped, flip them back
+                {
+                    playerMovement.FlipGravity();
+                }
+                playerMovement.ResetFlips();
             }
-            playerMovement.ResetFlips();
         }
     }
 }

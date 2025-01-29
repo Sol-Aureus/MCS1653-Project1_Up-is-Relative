@@ -22,7 +22,7 @@ public class PlatformMovement : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         /* Thanks to Rytech for the sine wave function code
          * https://www.youtube.com/watch?v=2Y3Y9-Az7oE
