@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
 
     // Ground check
     private CapsuleCollider2D groundCollider;
-    private bool isFlipped;
+    public bool isFlipped;
 
     // Start is called before the first frame update
     void Start()
@@ -94,7 +94,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     // Reverses the gravity of the player
-    void FlipGravity()
+    public void FlipGravity()
     {
         // Flips the gravity
         playerRigidbody.gravityScale *= -1;
