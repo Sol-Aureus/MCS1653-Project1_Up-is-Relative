@@ -74,7 +74,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     // Resets the flip times
-    void ResetFlips()
+    public void ResetFlips()
     {
         flipTimes = totalFlipTimes;
     }

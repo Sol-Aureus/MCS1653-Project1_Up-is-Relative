@@ -6,6 +6,7 @@ public class RespawnPlayer : MonoBehaviour
 {
     // Connect to RespawnPlayer
     private GameObject player;
+    private PlayerMovement playerMovement;
     public GameObject respawnPoint;
 
     // Start is called before the first frame update
@@ -13,6 +14,7 @@ public class RespawnPlayer : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         respawnPoint = GameObject.FindGameObjectWithTag("CheckPoint");
+        playerMovement = player.GetComponent<PlayerMovement>();
     }
 
     // Update is called once per frame
@@ -23,11 +25,10 @@ public class RespawnPlayer : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Something has entered the trigger");
         if (other.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Player has entered the trigger");
             player.transform.position = respawnPoint.transform.position;
+            playerMovement.ResetFlips();
         }
     }
 }
