@@ -5,14 +5,14 @@ using UnityEngine;
 public class RespawnPlayer : MonoBehaviour
 {
     // Connect to RespawnPlayer
-    public GameObject player;
+    private GameObject player;
     public GameObject respawnPoint;
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-
+        respawnPoint = GameObject.FindGameObjectWithTag("CheckPoint");
     }
 
     // Update is called once per frame

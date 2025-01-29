@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class CheckPoint : MonoBehaviour
 {
-    // Connect to RespawnPlayer
+    // Variables
     private RespawnPlayer respawn;
     private BoxCollider2D checkPointCollider;
+    private GameObject[] lava;
 
     // Start is called before the first frame update
     void Start()
     {
-        respawn = GameObject.FindGameObjectWithTag("Respawn").GetComponent<RespawnPlayer>();
+        lava = GameObject.FindGameObjectsWithTag("Respawn"); // Returns an array of GameObjects with the tag "Respawn"
         checkPointCollider = GetComponent<BoxCollider2D>();
     }
 
@@ -25,8 +26,15 @@ public class CheckPoint : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            // Set the respawn point to this checkpoint
-            respawn.respawnPoint = this.gameObject;
+            foreach (GameObject script in lava) // Cycle through all the lava objects
+            {
+                if (script.GetComponent<RespawnPlayer>() != null) // Checks if the "RespawnPlayer" script is attached to the lava object
+                {
+                    respawn = script.GetComponent<RespawnPlayer>(); // Connect to the "RespawnPlayer" script
+
+                    respawn.respawnPoint = this.gameObject; // Set the respawn point to this checkpoint
+                }
+            }
 
             // Disable the collider so the player can't set the respawn point again
             checkPointCollider.enabled = false;

@@ -1,49 +1,66 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class PlatformMovement : MonoBehaviour
 {
-    public Transform[] waypoints;
-    public float speed = 1.8f;
-    public float tolerance = 0.05f;
+    // Connect to points
+    public Transform[] points;
 
-    private Vector3 currentTarget;
-    private int nextTarget;
+    // Variables
+    public int startingPoint;
+    public float platformSpeed;
+    private float sinTime;
 
-    // Improvements to consider:
-    // - Player needs to stick with platform moving horizontally
-    // - Ease in and out--slower closer to target
-    // - Make handle an array of any number of waypoints, not just 2
+    private int i;
 
     // Start is called before the first frame update
     void Start()
     {
-        currentTarget = waypoints[1].position;
-        nextTarget = 0;
+        transform.position = points[startingPoint].position; // Moves the platform to the starting point
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position = Vector3.MoveTowards(transform.position, currentTarget, speed * Time.deltaTime);
-        if (Vector3.Distance(currentTarget, transform.position) < tolerance)
+        if (transform.position != points[i].position)
         {
-            SwitchTargets();
+            sinTime += (platformSpeed * Time.deltaTime) / 100; // Gets the move speed of the platform
+            sinTime = Mathf.Clamp(sinTime, 0, Mathf.PI); // Keeps the sinTime between 0 and PI
+            float t = evaluate(sinTime); // Evaluates the sine wave function
+            transform.position = Vector2.Lerp(transform.position, points[i].position, t); // Linearly interpolates between the platform's position and the next point using the sine wave function as the t value
+        }
+
+        if (Vector2.Distance(transform.position, points[i].position) < 0.001f)
+        {
+            i++;
+            sinTime = 0;
+            if (i >= points.Length)
+            {
+                i = 0;
+            }
         }
     }
 
-    private void SwitchTargets()
+    public float evaluate(float x)
     {
-        currentTarget = waypoints[nextTarget].position;
+        return 0.5f * Mathf.Sin(x - Mathf.PI / 2f) + 0.5f; // Transforms a sine wave function to be from 0 to 1
+    }
 
-        if (nextTarget == 0)
-        {            
-            nextTarget = 1;
-        }
-        else
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
         {
-            nextTarget = 0;
+            collision.transform.SetParent(transform); // Sets the player's parent to the platform
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            collision.transform.SetParent(null); // Removes the player's parent
         }
     }
 }
