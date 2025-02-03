@@ -19,6 +19,12 @@ public class PlayerMovement : MonoBehaviour
     private CapsuleCollider2D groundCollider;
     public bool isFlipped;
 
+    // Coyote jump and Jump buffer
+    private float coyoteTimeCounter;
+    public float coyoteTime;
+    private float jumpBufferCounter;
+    public float jumpBuffer;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -47,18 +53,40 @@ public class PlayerMovement : MonoBehaviour
         if (IsGrounded())
         {
             ResetFlips();
+            coyoteTimeCounter = coyoteTime;
+        }
+        else
+        {
+            coyoteTimeCounter -= Time.deltaTime; // Counts down the coyote timer
+        }
+
+        if (Input.GetButtonDown("Jump"))
+        {
+            jumpBufferCounter = jumpBuffer;
+            Debug.Log("Jumped");
+            Debug.Log(jumpBufferCounter);
+        }
+        else
+        {
+            jumpBufferCounter -= Time.deltaTime;
         }
 
         // Flips the player gravity if they are grounded or have flips left
-        if (Input.GetButtonDown("Jump") && IsGrounded())
+        if (jumpBufferCounter > 0)
         {
-            FlipGravity();
-            ResetFlips();
-        }
-        else if (Input.GetButtonDown("Jump") && !IsGrounded() && flipTimes > 0)
-        {
-            FlipGravity();
-            flipTimes--;
+            if (coyoteTimeCounter > 0) // Checks if the coyote time is active
+            {
+                FlipGravity();
+                ResetFlips();
+                coyoteTimeCounter = 0;
+                jumpBufferCounter = 0;
+            }
+            else if (flipTimes > 0)
+            {
+                FlipGravity();
+                flipTimes--;
+                jumpBufferCounter = 0;
+            }
         }
     }
 

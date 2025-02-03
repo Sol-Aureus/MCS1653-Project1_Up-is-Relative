@@ -200,3 +200,6 @@ MonoBehaviour:
   moveSpeed: 8
   totalFlipTimes: 1
   jumpPower: 6
+  isFlipped: 0
+  coyoteTime: 0.2
+  jumpBuffer: 0.2

@@ -31,7 +31,7 @@ Spacebar reverses gravity
 <br>
 
 3. **Any assets used that you didn't create yourself?** <br> (art, music, etc. Just tell us where you got it, link it here)
-No
+Not yet
 
 
 <br>
@@ -50,12 +50,15 @@ No
 
 6. **Did you get help from any online websites, videos, or tutorials?** <br> (link them here)
 https://www.youtube.com/watch?v=2Y3Y9-Az7oE
+https://www.youtube.com/watch?v=RFix_Kg2Di0
 
 
 <br>
 
 7. **What trouble did you have with this project?**
 UI
+Level design
+Art direction
 
 
 <br>
