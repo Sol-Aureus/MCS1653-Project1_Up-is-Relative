@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
 
     // Left right movement
     public float moveSpeed;
+    public float speedMultiplier;
     public float totalFlipTimes;
     private float flipTimes;
     private float playerInput;
@@ -37,7 +38,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         // Gets the horizontal input
-        playerInput = Input.GetAxisRaw("Horizontal");
+        playerInput = Mathf.Lerp(playerInput, Input.GetAxisRaw("Horizontal"), speedMultiplier * Time.deltaTime);
 
         // Flips the player sprite based on the input
         if (playerInput > 0)
@@ -99,6 +100,14 @@ public class PlayerMovement : MonoBehaviour
     bool IsGrounded()
     {
         return groundCollider.IsTouchingLayers(LayerMask.GetMask("Ground"));
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (groundCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
+        {
+
+        }
     }
 
     // Resets the flip times
