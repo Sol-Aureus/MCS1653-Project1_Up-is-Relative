@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 9210443519693499383}
   - component: {fileID: 3210405347593953700}
   - component: {fileID: 7129838526592071296}
+  - component: {fileID: 1174977686343818180}
   m_Layer: 0
   m_Name: SlimePurple
   m_TagString: Player
@@ -77,7 +78,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 3a77490f7e106344a8c5da1511b5a696, type: 3}
+  m_Sprite: {fileID: -202910577, guid: dba24e083d967b24caeeb6241b03b96f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -85,7 +86,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!58 &1346280611565776350
@@ -149,7 +150,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!70 &3210405347593953700
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -204,3 +205,24 @@ MonoBehaviour:
   isFlipped: 0
   coyoteTime: 0.2
   jumpBuffer: 0.2
+--- !u!95 &1174977686343818180
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 684776326469239504}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fdbbb3bb5a6cc1249af237fcfe280531, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

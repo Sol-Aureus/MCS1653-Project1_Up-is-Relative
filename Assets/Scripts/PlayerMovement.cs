@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
     // Connecting player obejct
     private Rigidbody2D playerRigidbody;
     private SpriteRenderer playerSprite;
+    private Animator animator;
 
     // Left right movement
     public float moveSpeed;
@@ -31,6 +32,7 @@ public class PlayerMovement : MonoBehaviour
     {
         playerRigidbody = GetComponent<Rigidbody2D>();
         playerSprite = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
         groundCollider = GetComponent<CapsuleCollider2D>();
     }
 
@@ -39,6 +41,9 @@ public class PlayerMovement : MonoBehaviour
     {
         // Gets the horizontal input
         playerInput = Mathf.Lerp(playerInput, Input.GetAxisRaw("Horizontal"), speedMultiplier * Time.deltaTime);
+
+        // Sends the player speed to the animator
+        animator.SetFloat("Speed", Mathf.Abs(playerInput));
 
         // Flips the player sprite based on the input
         if (playerInput > 0)
@@ -55,17 +60,17 @@ public class PlayerMovement : MonoBehaviour
         {
             ResetFlips();
             coyoteTimeCounter = coyoteTime;
+            animator.SetBool("IsFalling", false);
         }
         else
         {
             coyoteTimeCounter -= Time.deltaTime; // Counts down the coyote timer
+            animator.SetBool("IsFalling", true);
         }
 
         if (Input.GetButtonDown("Jump"))
         {
             jumpBufferCounter = jumpBuffer;
-            Debug.Log("Jumped");
-            Debug.Log(jumpBufferCounter);
         }
         else
         {
@@ -100,14 +105,6 @@ public class PlayerMovement : MonoBehaviour
     bool IsGrounded()
     {
         return groundCollider.IsTouchingLayers(LayerMask.GetMask("Ground"));
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (groundCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
-        {
-
-        }
     }
 
     // Resets the flip times
