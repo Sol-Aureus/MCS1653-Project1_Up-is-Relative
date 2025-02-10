@@ -6,6 +6,8 @@ TagManager:
   tags:
   - CheckPoint
   - Pause
+  - Lives
+  - Canvas
   layers:
   - Default
   - TransparentFX

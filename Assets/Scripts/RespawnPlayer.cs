@@ -8,6 +8,7 @@ public class RespawnPlayer : MonoBehaviour
     private GameObject player;
     private PlayerMovement playerMovement;
     public GameObject respawnPoint;
+    private GameObject playerLives;
 
     // Start is called before the first frame update
     void Start()
@@ -15,6 +16,7 @@ public class RespawnPlayer : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         respawnPoint = GameObject.FindGameObjectWithTag("CheckPoint");
         playerMovement = player.GetComponent<PlayerMovement>();
+        playerLives = GameObject.FindGameObjectWithTag("Lives");
     }
 
     // Update is called once per frame
@@ -35,6 +37,7 @@ public class RespawnPlayer : MonoBehaviour
                     playerMovement.FlipGravity();
                 }
                 playerMovement.ResetFlips();
+                playerLives.GetComponent<LivesCounter>().RemoveLife();
             }
         }
     }

@@ -8,12 +8,14 @@ public class CheckPoint : MonoBehaviour
     private RespawnPlayer respawn;
     private BoxCollider2D checkPointCollider;
     private GameObject[] lava;
+    private GameObject playerLives;
 
     // Start is called before the first frame update
     void Start()
     {
         lava = GameObject.FindGameObjectsWithTag("Respawn"); // Returns an array of GameObjects with the tag "Respawn"
         checkPointCollider = GetComponent<BoxCollider2D>();
+        playerLives = GameObject.FindGameObjectWithTag("Lives");
     }
 
     // Update is called once per frame
@@ -35,6 +37,8 @@ public class CheckPoint : MonoBehaviour
                     respawn.respawnPoint = this.gameObject; // Set the respawn point to this checkpoint
                 }
             }
+
+            playerLives.GetComponent<LivesCounter>().ResetLives();
 
             // Disable the collider so the player can't set the respawn point again
             checkPointCollider.enabled = false;
