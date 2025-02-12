@@ -7,6 +7,7 @@ public class CheckPoint : MonoBehaviour
     // Variables
     private RespawnPlayer respawn;
     private BoxCollider2D checkPointCollider;
+    private SpriteRenderer checkPointSprite;
     private GameObject[] lava;
     private GameObject playerLives;
 
@@ -15,6 +16,7 @@ public class CheckPoint : MonoBehaviour
     {
         lava = GameObject.FindGameObjectsWithTag("Respawn"); // Returns an array of GameObjects with the tag "Respawn"
         checkPointCollider = GetComponent<BoxCollider2D>();
+        checkPointSprite = GetComponent<SpriteRenderer>();
         playerLives = GameObject.FindGameObjectWithTag("Lives");
     }
 
@@ -42,6 +44,7 @@ public class CheckPoint : MonoBehaviour
 
             // Disable the collider so the player can't set the respawn point again
             checkPointCollider.enabled = false;
+            checkPointSprite.enabled = false;
         }
     }
 }

@@ -33,6 +33,7 @@ public class ButtonActivation : MonoBehaviour
             {
                 platformScript.DisablePlatform(); // Enable the platform
             }
+            gameObject.SetActive(false);
         }
     }
 }
