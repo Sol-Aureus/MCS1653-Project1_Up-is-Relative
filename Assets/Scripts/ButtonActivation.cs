@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class ButtonActivation : MonoBehaviour
 {
-    private TogglePlatform platformScript;
-    public GameObject platform;
-    public bool toggle;
+    [SerializeField] GameObject platform;
+    private PlatformMovement platformMovement;
 
     // Start is called before the first frame update
     void Start()
     {
-        platformScript = platform.GetComponent<TogglePlatform>();
+        platformMovement = platform.GetComponent<PlatformMovement>();
     }
 
     // Update is called once per frame
@@ -25,14 +24,7 @@ public class ButtonActivation : MonoBehaviour
         // When the player enters the trigger
         if (other.gameObject.CompareTag("Player"))
         {
-            if (toggle)
-            {
-                platformScript.EnablePlatform(); // Disable the platform
-            }
-            else
-            {
-                platformScript.DisablePlatform(); // Enable the platform
-            }
+            platformMovement.ToggleMove();
             gameObject.SetActive(false);
         }
     }

@@ -7,6 +7,8 @@ public class PlatformMovement : MonoBehaviour
 {
     // Connect to points
     public Transform[] points;
+    public bool move;
+    public bool toggle;
 
     // Variables
     public int startingPoint;
@@ -24,24 +26,34 @@ public class PlatformMovement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        /* Thanks to Rytech for the sine wave function code
-         * https://www.youtube.com/watch?v=2Y3Y9-Az7oE
-         */
-        if (transform.position != points[i].position)
+        if (move)
         {
-            sinTime += (platformSpeed * Time.deltaTime) / 100; // Gets the move speed of the platform
-            sinTime = Mathf.Clamp(sinTime, 0, Mathf.PI); // Keeps the sinTime between 0 and PI
-            float t = evaluate(sinTime); // Evaluates the sine wave function
-            transform.position = Vector2.Lerp(transform.position, points[i].position, t); // Linearly interpolates between the platform's position and the next point using the sine wave function as the t value
-        }
-
-        if (Vector2.Distance(transform.position, points[i].position) < 0.001f)
-        {
-            i++;
-            sinTime = 0;
-            if (i >= points.Length)
+            /* Thanks to Rytech for the sine wave function code
+             * https://www.youtube.com/watch?v=2Y3Y9-Az7oE
+             */
+            if (transform.position != points[i].position)
             {
-                i = 0;
+                sinTime += (platformSpeed * Time.deltaTime) / 100; // Gets the move speed of the platform
+                sinTime = Mathf.Clamp(sinTime, 0, Mathf.PI); // Keeps the sinTime between 0 and PI
+                float t = evaluate(sinTime); // Evaluates the sine wave function
+                transform.position = Vector2.Lerp(transform.position, points[i].position, t); // Linearly interpolates between the platform's position and the next point using the sine wave function as the t value
+            }
+
+            if (Vector2.Distance(transform.position, points[i].position) < 0.005f)
+            {
+                if (!toggle)
+                {
+                    i++;
+                }
+                else
+                {
+                    i = 1;
+                }
+                sinTime = 0;
+                if (i >= points.Length)
+                {
+                    i = 0;
+                }
             }
         }
     }
@@ -65,5 +77,10 @@ public class PlatformMovement : MonoBehaviour
         {
             collision.transform.SetParent(null); // Removes the player's parent
         }
+    }
+
+    public void ToggleMove()
+    {
+        move = !move;
     }
 }

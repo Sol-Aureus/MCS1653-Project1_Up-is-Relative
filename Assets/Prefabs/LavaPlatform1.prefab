@@ -148,6 +148,7 @@ MonoBehaviour:
   points:
   - {fileID: 248147429472125736}
   - {fileID: 5321315107593192565}
+  move: 1
   startingPoint: 0
   platformSpeed: 25
 --- !u!114 &6967182038629049375
@@ -193,7 +194,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2459978844914833483}
-  - component: {fileID: 490193119300022315}
   m_Layer: 0
   m_Name: LavaPlatform1
   m_TagString: Untagged
@@ -219,18 +219,6 @@ Transform:
   - {fileID: 5321315107593192565}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &490193119300022315
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6296309661483905946}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd581f9e0013a9949a7ed227ba9d4945, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &8031421373628504743
 GameObject:
   m_ObjectHideFlags: 0
