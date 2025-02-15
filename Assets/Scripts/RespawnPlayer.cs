@@ -9,6 +9,11 @@ public class RespawnPlayer : MonoBehaviour
     private PlayerMovement playerMovement;
     public GameObject respawnPoint;
     private GameObject playerLives;
+    private GameObject[] buttons;
+    private GameObject[] platforms;
+    private GameObject[] lavaPlatforms;
+    private ButtonActivation buttonScript;
+    private PlatformMovement platformScript;
 
     // Start is called before the first frame update
     void Start()
@@ -17,12 +22,9 @@ public class RespawnPlayer : MonoBehaviour
         respawnPoint = GameObject.FindGameObjectWithTag("CheckPoint");
         playerMovement = player.GetComponent<PlayerMovement>();
         playerLives = GameObject.FindGameObjectWithTag("Lives");
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        buttons = GameObject.FindGameObjectsWithTag("Button");
+        platforms = GameObject.FindGameObjectsWithTag("Platform");
+        lavaPlatforms = GameObject.FindGameObjectsWithTag("Respawn");
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -38,6 +40,39 @@ public class RespawnPlayer : MonoBehaviour
                 }
                 playerMovement.ResetFlips();
                 playerLives.GetComponent<LivesCounter>().RemoveLife();
+
+                // Resets all buttons
+                foreach (GameObject script in buttons) // Cycle through all the button objects
+                {
+                    if (script.GetComponent<ButtonActivation>() != null) // Checks if the "ButtonActivation" script is attached to the button object
+                    {
+                        buttonScript = script.GetComponent<ButtonActivation>(); // Connect to the "ButtonActivation" script
+
+                        buttonScript.ResetButton();
+                    }
+                }
+
+                // Resets all platforms
+                foreach (GameObject script in platforms) // Cycle through all the platform objects
+                {
+                    if (script.GetComponent<PlatformMovement>() != null) // Checks if the "PlatformMovement" script is attached to the button object
+                    {
+                        platformScript = script.GetComponent<PlatformMovement>(); // Connect to the "PlatformMovement" script
+
+                        platformScript.ResetPlatform();
+                    }
+                }
+
+                // Resets all platforms
+                foreach (GameObject script in lavaPlatforms) // Cycle through all the platform objects
+                {
+                    if (script.GetComponent<PlatformMovement>() != null) // Checks if the "PlatformMovement" script is attached to the button object
+                    {
+                        platformScript = script.GetComponent<PlatformMovement>(); // Connect to the "PlatformMovement" script
+
+                        platformScript.ResetPlatform();
+                    }
+                }
             }
         }
     }

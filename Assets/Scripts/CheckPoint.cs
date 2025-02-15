@@ -10,6 +10,7 @@ public class CheckPoint : MonoBehaviour
     private SpriteRenderer checkPointSprite;
     private GameObject[] lava;
     private GameObject playerLives;
+    [SerializeField] Sprite claimedSprite;
 
     // Start is called before the first frame update
     void Start()
@@ -18,12 +19,6 @@ public class CheckPoint : MonoBehaviour
         checkPointCollider = GetComponent<BoxCollider2D>();
         checkPointSprite = GetComponent<SpriteRenderer>();
         playerLives = GameObject.FindGameObjectWithTag("Lives");
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -44,7 +39,7 @@ public class CheckPoint : MonoBehaviour
 
             // Disable the collider so the player can't set the respawn point again
             checkPointCollider.enabled = false;
-            checkPointSprite.enabled = false;
+            checkPointSprite.sprite = claimedSprite;
         }
     }
 }

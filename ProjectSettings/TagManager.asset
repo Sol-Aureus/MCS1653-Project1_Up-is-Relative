@@ -8,6 +8,8 @@ TagManager:
   - Pause
   - Lives
   - Canvas
+  - Button
+  - Platform
   layers:
   - Default
   - TransparentFX

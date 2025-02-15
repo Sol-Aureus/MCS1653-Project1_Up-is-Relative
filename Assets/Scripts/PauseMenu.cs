@@ -8,13 +8,14 @@ public class PauseMenu : MonoBehaviour
 {
     [SerializeField] GameObject pauseMenu;
     [SerializeField] GameObject deathMenu;
+    [SerializeField] GameObject winMenu;
     private bool isPaused = false;
-    private bool isDead = false;
+    private bool otherMenu = false;
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Cancel") && !isDead)
+        if (Input.GetButtonDown("Cancel") && !otherMenu)
         {
             Pause();
         }
@@ -22,8 +23,15 @@ public class PauseMenu : MonoBehaviour
 
     public void Die()
     {
-        isDead = true;
+        otherMenu = true;
         deathMenu.SetActive(true);
+        Time.timeScale = 0;
+    }
+
+    public void Win()
+    {
+        otherMenu = true;
+        winMenu.SetActive(true);
         Time.timeScale = 0;
     }
 

@@ -2,13 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlatformMovement : MonoBehaviour
 {
     // Connect to points
     public Transform[] points;
     public bool move;
+    private bool originMove;
     public bool toggle;
+    private bool originToggle;
 
     // Variables
     public int startingPoint;
@@ -21,6 +24,8 @@ public class PlatformMovement : MonoBehaviour
     void Start()
     {
         transform.position = points[startingPoint].position; // Moves the platform to the starting point
+        originMove = move;
+        originToggle = toggle;
     }
 
     // Update is called once per frame
@@ -39,7 +44,7 @@ public class PlatformMovement : MonoBehaviour
                 transform.position = Vector2.Lerp(transform.position, points[i].position, t); // Linearly interpolates between the platform's position and the next point using the sine wave function as the t value
             }
 
-            if (Vector2.Distance(transform.position, points[i].position) < 0.005f)
+            if (Vector2.Distance(transform.position, points[i].position) < 0.01f)
             {
                 if (!toggle)
                 {
@@ -82,5 +87,15 @@ public class PlatformMovement : MonoBehaviour
     public void ToggleMove()
     {
         move = !move;
+    }
+
+    // Resets the platform on call
+    public void ResetPlatform()
+    {
+        move = originMove;
+        toggle = originToggle;
+        transform.position = points[startingPoint].position;
+        i = 0;
+        sinTime = 0;
     }
 }

@@ -6,17 +6,17 @@ public class ButtonActivation : MonoBehaviour
 {
     [SerializeField] GameObject platform;
     private PlatformMovement platformMovement;
+    private SpriteRenderer spriteRenderer;
+    private CircleCollider2D circleCollider;
+    [SerializeField] Sprite normalSprite;
+    [SerializeField] Sprite pressedSprite;
 
     // Start is called before the first frame update
     void Start()
     {
         platformMovement = platform.GetComponent<PlatformMovement>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        circleCollider = GetComponent<CircleCollider2D>();
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -25,7 +25,15 @@ public class ButtonActivation : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             platformMovement.ToggleMove();
-            gameObject.SetActive(false);
+            circleCollider.enabled = false;
+            spriteRenderer.sprite = pressedSprite;
         }
+    }
+
+    // Resets the button on call
+    public void ResetButton()
+    {
+        circleCollider.enabled = true;
+        spriteRenderer.sprite = normalSprite;
     }
 }

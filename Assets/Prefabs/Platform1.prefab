@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 3452740183238704550}
   m_Layer: 3
   m_Name: Platform
-  m_TagString: Untagged
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -179,6 +179,7 @@ MonoBehaviour:
   - {fileID: 6044269128913341545}
   - {fileID: 3550887458088457489}
   move: 1
+  toggle: 0
   startingPoint: 0
   platformSpeed: 25
 --- !u!95 &3452740183238704550

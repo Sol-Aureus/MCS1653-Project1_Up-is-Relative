@@ -17,12 +17,6 @@ public class LivesCounter : MonoBehaviour
         ResetLives();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void RemoveLife()
     {
         lives--;

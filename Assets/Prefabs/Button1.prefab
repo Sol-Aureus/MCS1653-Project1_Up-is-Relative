@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5438182992436726264}
   m_Layer: 0
   m_Name: Button1
-  m_TagString: Untagged
+  m_TagString: Button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -134,4 +134,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   platform: {fileID: 0}
-  toggle: 0
+  normalSprite: {fileID: 21300000, guid: e43e95db7205f9345ace8fbff6b8b6d3, type: 3}
+  pressedSprite: {fileID: 21300000, guid: 263f89459b9d83541a337060036d2762, type: 3}
