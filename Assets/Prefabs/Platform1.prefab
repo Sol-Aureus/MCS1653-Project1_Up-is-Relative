@@ -180,6 +180,7 @@ MonoBehaviour:
   - {fileID: 3550887458088457489}
   move: 1
   toggle: 0
+  waitTime: 1
   startingPoint: 0
   platformSpeed: 25
 --- !u!95 &3452740183238704550

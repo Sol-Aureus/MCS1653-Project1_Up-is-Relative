@@ -12,6 +12,7 @@ public class PlatformMovement : MonoBehaviour
     private bool originMove;
     public bool toggle;
     private bool originToggle;
+    public float waitTime;
 
     // Variables
     public int startingPoint;
@@ -24,6 +25,7 @@ public class PlatformMovement : MonoBehaviour
     void Start()
     {
         transform.position = points[startingPoint].position; // Moves the platform to the starting point
+        i = startingPoint;
         originMove = move;
         originToggle = toggle;
     }
@@ -44,7 +46,7 @@ public class PlatformMovement : MonoBehaviour
                 transform.position = Vector2.Lerp(transform.position, points[i].position, t); // Linearly interpolates between the platform's position and the next point using the sine wave function as the t value
             }
 
-            if (Vector2.Distance(transform.position, points[i].position) < 0.01f)
+            if (Vector2.Distance(transform.position, points[i].position) < waitTime / 100)
             {
                 if (!toggle)
                 {
@@ -95,7 +97,7 @@ public class PlatformMovement : MonoBehaviour
         move = originMove;
         toggle = originToggle;
         transform.position = points[startingPoint].position;
-        i = 0;
+        i = startingPoint;
         sinTime = 0;
     }
 }

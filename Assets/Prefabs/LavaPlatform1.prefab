@@ -149,6 +149,8 @@ MonoBehaviour:
   - {fileID: 248147429472125736}
   - {fileID: 5321315107593192565}
   move: 1
+  toggle: 0
+  waitTime: 1
   startingPoint: 0
   platformSpeed: 25
 --- !u!114 &6967182038629049375
