@@ -10,6 +10,7 @@ public class ButtonActivation : MonoBehaviour
     private CircleCollider2D circleCollider;
     [SerializeField] Sprite normalSprite;
     [SerializeField] Sprite pressedSprite;
+    [SerializeField] AudioClip pressSound;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +28,7 @@ public class ButtonActivation : MonoBehaviour
             platformMovement.ToggleMove();
             circleCollider.enabled = false;
             spriteRenderer.sprite = pressedSprite;
+            SoundFX.instance.PlaySound(pressSound, transform, 1);
         }
     }
 

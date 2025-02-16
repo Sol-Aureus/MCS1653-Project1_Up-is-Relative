@@ -12,7 +12,7 @@
 # Required ReadMe Info for ALL MCS1653 Projects
 * **Up is Relative**   - 
 * **Eric Harrison** - 
-* **29/01/2025**      - 
+* **17/02/2025**      - 
 
 <br>
 
@@ -25,7 +25,7 @@ Spacebar reverses gravity
 <br>
 
 2. **What creative additions did you make? How can we find them?**
-[Answer this later]
+The player movement has a slight acceleration to make it smoother
 
 
 <br>
@@ -43,7 +43,7 @@ No
 <br>
 
 5. **Did you get help from any AI Code Assistants?** <br> (Tell us which .cs file to look in for the citation and describe what you learned)
-
+No
 
 
 <br>
@@ -68,7 +68,7 @@ Art direction
 <br>
 
 8. **Is there anything else we should know?**
-
+No
 
 
 

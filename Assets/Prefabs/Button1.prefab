@@ -136,3 +136,4 @@ MonoBehaviour:
   platform: {fileID: 0}
   normalSprite: {fileID: 21300000, guid: e43e95db7205f9345ace8fbff6b8b6d3, type: 3}
   pressedSprite: {fileID: 21300000, guid: 263f89459b9d83541a337060036d2762, type: 3}
+  pressSound: {fileID: 8300000, guid: 1c71544ca273b3b40a8ddae4a46e9a21, type: 3}
