@@ -31,7 +31,7 @@ Spacebar reverses gravity
 <br>
 
 3. **Any assets used that you didn't create yourself?** <br> (art, music, etc. Just tell us where you got it, link it here)
-Not yet
+Sounds: https://sfbgames.itch.io/chiptone
 
 
 <br>
@@ -55,6 +55,7 @@ https://www.youtube.com/watch?v=MNUYe0PWNNs
 https://www.youtube.com/watch?v=hkaysu1Z-N8
 https://www.youtube.com/watch?v=zc8ac_qUXQY
 https://www.youtube.com/watch?v=q5Kt45eZvNQ
+https://www.youtube.com/watch?v=DU7cgVsU2rM
 
 <br>
 

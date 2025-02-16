@@ -15,6 +15,8 @@ public class RespawnPlayer : MonoBehaviour
     private ButtonActivation buttonScript;
     private PlatformMovement platformScript;
 
+    [SerializeField] private AudioClip[] damageSounds;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,7 +35,10 @@ public class RespawnPlayer : MonoBehaviour
         {
             if (other.GetType().ToString().Equals("UnityEngine.CircleCollider2D"))
             {
+                player.transform.SetParent(null);
                 player.transform.position = respawnPoint.transform.position;
+                SoundFX.instance.PlayRandomSound(damageSounds, player.transform, 1f);
+
                 if (playerMovement.isFlipped) // If the player is flipped, flip them back
                 {
                     playerMovement.FlipGravity();

@@ -144,3 +144,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   claimedSprite: {fileID: 21300000, guid: af92451f417de0245aaef1acf5bb5932, type: 3}
+  soundFX: {fileID: 8300000, guid: 7f97e69a7c59e874794c2ea5e1af7614, type: 3}

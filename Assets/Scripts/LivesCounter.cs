@@ -12,6 +12,8 @@ public class LivesCounter : MonoBehaviour
     [SerializeField] GameObject uiScripts;
     [SerializeField] GameObject antiLife;
     private RectTransform antiLifeRect;
+    [SerializeField] private AudioClip soundFX;
+    [SerializeField] private GameObject player;
 
     // Start is called before the first frame update
     void Start()
@@ -39,6 +41,7 @@ public class LivesCounter : MonoBehaviour
         if (lives <= 0)
         {
             uiScripts.GetComponent<PauseMenu>().Die();
+            SoundFX.instance.PlaySound(soundFX, player.transform, 1);
         }
     }
 

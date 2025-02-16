@@ -12,6 +12,8 @@ public class PauseMenu : MonoBehaviour
     private bool isPaused = false;
     private bool otherMenu = false;
 
+    [SerializeField] private AudioClip soundFX;
+
     // Update is called once per frame
     void Update()
     {
@@ -43,6 +45,7 @@ public class PauseMenu : MonoBehaviour
         if (isPaused)
         {
             Time.timeScale = 0;
+            SoundFX.instance.PlaySound(soundFX, transform, 1);
         }
         else
         {

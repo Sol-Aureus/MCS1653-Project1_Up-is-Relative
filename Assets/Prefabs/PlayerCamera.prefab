@@ -107,3 +107,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   offset: {x: 0, y: 0, z: -10}
   smoothSpeed: 4
+  background1: {fileID: 0}
+  background2: {fileID: 0}
+  background3: {fileID: 0}
+  background1Speed: 0.85
+  background2Speed: 0.9
+  background3Speed: 0.95

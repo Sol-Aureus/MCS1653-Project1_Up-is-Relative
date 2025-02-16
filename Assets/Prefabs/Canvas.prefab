@@ -52,6 +52,8 @@ MonoBehaviour:
   maxLives: 3
   uiScripts: {fileID: 3742821354990702668}
   antiLife: {fileID: 543869335416981926}
+  soundFX: {fileID: 8300000, guid: 57b618ea1bb08a94ca3188ddc268fbb6, type: 3}
+  player: {fileID: 684776326469239504, guid: 87486b8a88972e54e99a1e5e9c7e5403, type: 3}
 --- !u!1 &207122049992559745
 GameObject:
   m_ObjectHideFlags: 0
@@ -1061,6 +1063,7 @@ MonoBehaviour:
   pauseMenu: {fileID: 9017879172415478448}
   deathMenu: {fileID: 1323667837756428608}
   winMenu: {fileID: 5246278969866994778}
+  soundFX: {fileID: 8300000, guid: 1c71544ca273b3b40a8ddae4a46e9a21, type: 3}
 --- !u!1 &3871056586474069173
 GameObject:
   m_ObjectHideFlags: 0

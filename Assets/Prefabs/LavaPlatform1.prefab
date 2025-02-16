@@ -166,6 +166,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   respawnPoint: {fileID: 0}
+  damageSounds:
+  - {fileID: 8300000, guid: 14f743f213061af479d1f731257ad792, type: 3}
+  - {fileID: 8300000, guid: 3b2df70f2d6abf84ab470f7ce6a59a7b, type: 3}
+  - {fileID: 8300000, guid: 81d6455e70e2d0f48b586933699f90dc, type: 3}
 --- !u!95 &958406598819295904
 Animator:
   serializedVersion: 5

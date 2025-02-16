@@ -12,6 +12,8 @@ public class CheckPoint : MonoBehaviour
     private GameObject playerLives;
     [SerializeField] Sprite claimedSprite;
 
+    [SerializeField] private AudioClip soundFX;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,6 +38,7 @@ public class CheckPoint : MonoBehaviour
             }
 
             playerLives.GetComponent<LivesCounter>().ResetLives();
+            SoundFX.instance.PlaySound(soundFX, transform, 1);
 
             // Disable the collider so the player can't set the respawn point again
             checkPointCollider.enabled = false;
