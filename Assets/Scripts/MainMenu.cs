@@ -5,6 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    [SerializeField] GameObject optionsMenu;
+
+    private void Awake()
+    {
+        optionsMenu.SetActive(false);
+    }
+
     public void PlayGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
@@ -12,7 +19,12 @@ public class MainMenu : MonoBehaviour
 
     public void Options()
     {
-        // Does nothing right now
+        optionsMenu.SetActive(true);
+    }
+
+    public void Back()
+    {
+        optionsMenu.SetActive(false);
     }
 
     public void QuitGame()
